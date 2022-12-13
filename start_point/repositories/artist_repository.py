@@ -11,13 +11,41 @@ def save(artist):
     artist.id = id
     return artist
 
-# def select_all():
-#     users = []
+def delete_all():
+    sql = "DELETE  FROM artists"
+    run_sql(sql)
 
-#     sql = "SELECT * FROM users"
-#     results = run_sql(sql)
 
-#     for row in results:
-#         user = User(row['first_name'], row['last_name'], row['id'] )
-#         users.append(user)
-#     return users
+def select(id):
+    artist = None
+    sql = "SELECT * FROM artists WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+
+    if results:
+        result = results[0]
+        artist = Artist(result['name'], result['id'])
+    return artist
+
+def select_all():
+    artists = []
+
+    sql = "SELECT * FROM artists"
+    results = run_sql(sql)
+
+    for row in results:
+        artist = Artist(row['name'], row['id'])
+        artists.append(artist)
+    return artists
+
+def albums(artist):
+    albums = []
+
+    sql = "SELECT * FROM albums WHERE artist_id = %s"
+    values = [artist.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        album = Album(row['tite'], artist, row['id'])
+        albums.append(album)
+    return albums

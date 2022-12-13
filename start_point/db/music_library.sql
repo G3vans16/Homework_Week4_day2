@@ -14,11 +14,11 @@ CREATE TABLE albums (
     artist_id INT NOT NULL REFERENCES artists(id)
 );
 
-INSERT INTO artists (name)
-VALUES ('Sonata Arctica');
+-- INSERT INTO artists (name)
+-- VALUES ('Sonata Arctica');
 
-INSERT INTO artists (name)
-VALUES ('Muse');
+-- INSERT INTO artists (name)
+-- VALUES ('Muse');
 
-INSERT INTO albums (title, artist_id)
-VALUES ('Absolution', 2);
+-- INSERT INTO albums (title, artist_id)
+-- VALUES ('Absolution', 2);
